@@ -19,6 +19,7 @@ class Config(object):
     (alias: `app.config`).
     """
 
+    @property
     def get_auth_manager(self):
         auth_manager = current_app.extensions.get("cognito-flask-auth")
         if not auth_manager:
@@ -135,7 +136,7 @@ class Config(object):
 
     @property
     def jwt_cognito_key(self):
-        auth_manager = self.get_auth_manager()
+        auth_manager = self.get_auth_manager
         # load and cache cognito JSON Web Key (JWK)
         jwt_key = None
         if not auth_manager.jwt_key:
@@ -146,12 +147,12 @@ class Config(object):
 
     @property
     def state(self):
-        auth_manager = self.get_auth_manager()
+        auth_manager = self.get_auth_manager
         return auth_manager.csrf_state
 
     @state.setter
     def state(self, value):
-        auth_manager = self.get_auth_manager()
+        auth_manager = self.get_auth_manager
         auth_manager.csrf_state = self.random_hex_bytes(n_bytes=8)
 
     @property
