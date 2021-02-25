@@ -50,6 +50,7 @@ def home():
 @app.route('/cognito/callback', methods=['GET'])
 @callback_handler
 def callback():
+    print("Do the stuff before post successfull login to AWS Cognito Service")
     for key in list(session.keys()):
         print(f"Value for {key} is {session[key]}")
     response = redirect(url_for("home"))

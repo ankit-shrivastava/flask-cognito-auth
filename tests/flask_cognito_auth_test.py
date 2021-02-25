@@ -1,15 +1,18 @@
 from flask_cognito_auth.config import Config
-from .app_test import app
-from datetime import timedelta
+from flask_cognito_auth.decorators import update_session
+from .server import app
+from .server import app_exception
+from .server import app_lazy
 import pytest
 from flask import Flask
-
-config = Config()
+from flask import session
+from datetime import datetime
 
 
 def test_cognito_config(app):
     with app.test_request_context():
-        app.secret_key = "SECRET_KEY"
+        config = Config()
+
         app.config['COGNITO_REGION'] = "us-east-1"
         app.config['COGNITO_USER_POOL_ID'] = "us-east-1_myPoolId"
         app.config['COGNITO_CLIENT_ID'] = "123drfthinvdr57opQWerv56"
@@ -51,3 +54,52 @@ def test_cognito_config(app):
         assert config.public_key_uri == (f"https://cognito-idp.us-east-1.amazonaws.com/us-east-1_myPoolId"
                                          f"/.well-known/jwks.json")
         assert config.jwt_code_exchange_uri == "https://mycognitodomain.com/oauth2/token"
+
+
+def test_cognito_auth_exeption(app_exception):
+    with app_exception.test_request_context():
+        config = Config()
+        # auth_mgr = config.get_auth_manager
+        try:
+            _ = config.get_auth_manager
+        except RuntimeError as e:
+            assert str(
+                e) == "Flask Cognito Auth extention is not registerd with Flask application."
+
+        try:
+            app_exception.config['COGNITO_REGION'] = ""
+            _ = config.region
+        except RuntimeError as e:
+            assert str(
+                e) == "COGNITO_REGION must be specified."
+
+        try:
+            _ = config.user_pool_id
+        except RuntimeError as e:
+            assert str(
+                e) == "COGNITO_USER_POOL_ID must be specified to locate the auth url."
+
+
+def test_cognito_auth_lazy(app_lazy):
+    with app_lazy.test_request_context():
+        config = Config()
+        app_lazy.config['COGNITO_REGION'] = "us-east-1"
+
+        assert config.region == "us-east-1"
+
+
+def test_cognito_session(app):
+    with app.test_request_context():
+        datetime_now = datetime.now()
+        update_session(username="myusername",
+                       id="myuserid",
+                       groups=['mygroup1', 'mygroup2'],
+                       email='myemail@domain.com',
+                       expires=datetime_now,
+                       refresh_token="mysupersecretrefreshtoken")
+        assert session['username'] == "myusername"
+        assert session['id'] == "myuserid"
+        assert session['groups'] == ['mygroup1', 'mygroup2']
+        assert session['email'] == "myemail@domain.com"
+        assert session['expires'] == datetime_now
+        assert session['refresh_token'] == "mysupersecretrefreshtoken"

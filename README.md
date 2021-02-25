@@ -1,7 +1,7 @@
 # Flask-Cognito-Auth
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![myid](htmlcov/favicon_32.png)](htmlcov/index.html)
+[![Coverage](htmlcov/favicon_32.png)](htmlcov/index.html)
 
 Flask-Cognito-Auth is a Flask implementation of AWS Cognito Service with User Pool. This extension helps to implement authentication solutions based on AWS's Cognito Service. It contains helpful functions and properties to handle oauth2 and token based authentication flows.
 This extension requires to enable "Enabled Identity Providers" in Appllication client settings of User Pool within AWS Cognito Sevice.
@@ -10,7 +10,7 @@ This extension requires to enable "Enabled Identity Providers" in Appllication c
 
 
 ```bash
-pip install git+https://github.com/ankit-shrivastava/flask-cognito-auth.git#main
+pip install flask-cognito-auth
 ```
 
 ### Usage
@@ -78,6 +78,7 @@ def home():
 @app.route('/cognito/callback', methods=['GET'])
 @callback_handler
 def callback():
+    print("Do the stuff before post successfull login to AWS Cognito Service")
     for key in list(session.keys()):
         print(f"Value for {key} is {session[key]}")
     response = redirect(url_for("home"))
@@ -119,6 +120,7 @@ pip install .
 
 1. Fork repo- https://github.com/ankit-shrivastava/flask-cognito-auth.git
 2. Create your feature branch - `git checkout -b feature/name`
-3. Commit your changes - `git commit -am "Added name"`
-4. Push to the branch - `git push origin feature/name`
-5. Create a new pull request
+3. Add Python test (pytest) and html covrage report for added   feature.
+4. Commit your changes - `git commit -am "Added name"`
+5. Push to the branch - `git push origin feature/name`
+6. Create a new pull request

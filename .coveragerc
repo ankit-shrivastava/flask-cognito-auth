@@ -3,11 +3,14 @@ branch = True
 source = flask_cognito_auth/
 
 [report]
-exclude_lines =
-    if self.debug:
-    pragma: no cover
-    raise NotImplementedError
-    if __name__ == .__main__.:
+# exclude_lines =
+#    if self.debug:
+#    pragma: no cover
+#    raise NotImplementedError
+#    if __name__ == .__main__.:
+#    (fn)
+#    def verify
+#    requests.get
 ignore_errors = True
 omit =
     tests/*

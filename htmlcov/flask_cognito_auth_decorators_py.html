@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for flask_cognito_auth/decorators.py: 21%</title>
+    <title>Coverage for flask_cognito_auth/decorators.py: 27%</title>
     <link rel="icon" sizes="32x32" href="favicon_32.png">
     <link rel="stylesheet" href="style.css" type="text/css">
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -18,13 +18,13 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>flask_cognito_auth/decorators.py</b> :
-            <span class="pc_cov">21%</span>
+            <span class="pc_cov">27%</span>
         </h1>
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
         <h2 class="stats">
             79 statements &nbsp;
-            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">19 run</button>
-            <button type="button" class="mis show_mis shortkey_m button_toggle_mis" title="Toggle lines missing">60 missing</button>
+            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">25 run</button>
+            <button type="button" class="mis show_mis shortkey_m button_toggle_mis" title="Toggle lines missing">54 missing</button>
             <button type="button" class="exc show_exc shortkey_x button_toggle_exc" title="Toggle lines excluded">0 excluded</button>
             <button type="button" class="par run show_par shortkey_p button_toggle_par" title="Toggle lines partially run">0 partial</button>
         </h2>
@@ -183,12 +183,12 @@
     <p id="t128" class="pln"><span class="n"><a href="#t128">128</a></span><span class="t"><span class="str">    :param expires (str):       AWS Cognito session timeout.</span>&nbsp;</span><span class="r"></span></p>
     <p id="t129" class="pln"><span class="n"><a href="#t129">129</a></span><span class="t"><span class="str">    :param refresh_token (str): JWT refresh token received in respose.</span>&nbsp;</span><span class="r"></span></p>
     <p id="t130" class="pln"><span class="n"><a href="#t130">130</a></span><span class="t"><span class="str">    """</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t131" class="mis show_mis"><span class="n"><a href="#t131">131</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'username'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">username</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t132" class="mis show_mis"><span class="n"><a href="#t132">132</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'id'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">id</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t133" class="mis show_mis"><span class="n"><a href="#t133">133</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'groups'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">groups</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t134" class="mis show_mis"><span class="n"><a href="#t134">134</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'email'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">email</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t135" class="mis show_mis"><span class="n"><a href="#t135">135</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'expires'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">expires</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t136" class="mis show_mis"><span class="n"><a href="#t136">136</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'refresh_token'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">refresh_token</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t131" class="run"><span class="n"><a href="#t131">131</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'username'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">username</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t132" class="run"><span class="n"><a href="#t132">132</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'id'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">id</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t133" class="run"><span class="n"><a href="#t133">133</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'groups'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">groups</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t134" class="run"><span class="n"><a href="#t134">134</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'email'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">email</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t135" class="run"><span class="n"><a href="#t135">135</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'expires'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">expires</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t136" class="run"><span class="n"><a href="#t136">136</a></span><span class="t">    <span class="nam">session</span><span class="op">[</span><span class="str">'refresh_token'</span><span class="op">]</span> <span class="op">=</span> <span class="nam">refresh_token</span>&nbsp;</span><span class="r"></span></p>
     <p id="t137" class="pln"><span class="n"><a href="#t137">137</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p id="t138" class="pln"><span class="n"><a href="#t138">138</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p id="t139" class="run"><span class="n"><a href="#t139">139</a></span><span class="t"><span class="key">def</span> <span class="nam">verify</span><span class="op">(</span><span class="nam">token</span><span class="op">:</span> <span class="nam">str</span><span class="op">,</span> <span class="nam">access_token</span><span class="op">:</span> <span class="nam">str</span> <span class="op">=</span> <span class="key">None</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
@@ -249,7 +249,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.4</a>,
-            created at 2021-02-24 22:16 +0530
+            created at 2021-02-25 16:53 +0530
         </p>
     </div>
 </div>
