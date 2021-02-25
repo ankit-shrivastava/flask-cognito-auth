@@ -1,1 +1,2 @@
-include cognito_auth/*.py
+include flask_cognito_auth/*.py
+include flask_cognito_auth/.version

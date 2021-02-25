@@ -68,7 +68,7 @@ def write_version(version, sha, filename):
 def get_version(filename):
     version = "1.0.0"  # Adding default version
 
-    # This block is for reading the version from foundry distribution
+    # This block is for reading the version from Flask Cognito Auth distribution
     if os.path.exists(path=filename):
         contents = None
         with open(file=filename, mode="r") as file:
@@ -156,7 +156,7 @@ if __name__ == '__main__':
     import sys
     do_setup()
     if "sdist" in sys.argv or "bdist_wheel" in sys.argv:
-        egg_info = os.path.join(ROOT, __NAME__ + '.egg-info')
+        egg_info = os.path.join(ROOT, __NAME__.replace("-", "_") + '.egg-info')
         delete(path=egg_info)
         eggs = os.path.join(ROOT, '.eggs')
         delete(path=eggs)
