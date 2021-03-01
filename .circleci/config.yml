@@ -27,6 +27,8 @@ jobs:
       - store_artifacts:
           path: htmlcov/
           destination: flask-cognito-auth
+      - store_test_results:
+          path: htmlcov/
 workflows:
   main:
     jobs:
