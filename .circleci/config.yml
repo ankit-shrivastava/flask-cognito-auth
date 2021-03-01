@@ -17,18 +17,18 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install pytest pytest-cov
+            pip install pytest pytest-cov pytest-json-report
       - run:
           name: Test extension
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pytest -v --cov --cov-report html
+            pytest -v --cov --cov-report html --json-report
       - store_artifacts:
           path: htmlcov/
           destination: flask-cognito-auth
       - store_test_results:
-          path: htmlcov/
+          path: .report.json
 workflows:
   main:
     jobs:
