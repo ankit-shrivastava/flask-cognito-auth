@@ -1,0 +1,33 @@
+version: 2.1
+
+jobs:
+  build-and-test:
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - checkout
+      - run:
+          name: Install extension 
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install .
+      - run:
+          name: Install test dependency 
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install pytest pytest-cov
+      - run:
+          name: Test extension
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pytest -v --cov --cov-report html
+      - store_artifacts:
+          path: htmlcov/
+          destination: flask-cognito-auth
+workflows:
+  main:
+    jobs:
+      - build-and-test
