@@ -1,7 +1,7 @@
 # Flask-Cognito-Auth
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Coverage](https://github.com/ankit-shrivastava/flask-cognito-auth/blob/main/htmlcov/favicon_32.png)](https://github.com/ankit-shrivastava/flask-cognito-auth/blob/main/htmlcov/index.html)
+[![CircleCI](https://circleci.com/gh/shrivastava-v-ankit/flask-cognito-auth.svg?style=svg)](https://circleci.com/gh/shrivastava-v-ankit/flask-cognito-auth)
 
 Flask-Cognito-Auth is a Flask implementation of AWS Cognito Service with User Pool. This extension helps to implement authentication solutions based on AWS's Cognito Service. It contains helpful functions and properties to handle oauth2 and token based authentication flows.
 This extension requires to enable "Enabled Identity Providers" in Appllication client settings of User Pool within AWS Cognito Sevice.

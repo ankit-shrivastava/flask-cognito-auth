@@ -147,30 +147,23 @@ class Config(object):
 
     @property
     def state(self):
-        auth_manager = self.get_auth_manager
-        return auth_manager.csrf_state
-
-    @state.setter
-    def state(self, value):
-        auth_manager = self.get_auth_manager
-        auth_manager.csrf_state = self.random_hex_bytes(n_bytes=8)
+        csrf_state = self.get_config_value(key="COGNITO_STATE",
+                                           error_message=None,
+                                           is_key_required=False,
+                                           is_value_required=False)
+        return csrf_state
 
     @property
     def login_uri(self):
+        csrf_state = self.state
+        state_val = ""
+        if csrf_state:
+            state_val = f"&state={csrf_state}"
         return (f"{self.domain}/authorize?client_id={self.client_id}"
-                f"&response_type=code&state={self.state}"
+                f"&response_type=code{state_val}"
                 f"&redirect_uri={self.redirect_uri}")
 
     @property
     def logout_uri(self):
         return (f"{self.domain}/logout?response_type=code"
                 f"&client_id={self.client_id}&logout_uri={self.signout_uri}")
-
-    def random_hex_bytes(self, n_bytes):
-        """
-        Method create a hex encoded string of random bytes.
-        :param n_bytes: Length of random hex encoded string.
-        :return h_bytes: Hex encoded string
-        """
-        h_bytes = os.urandom(n_bytes).hex()
-        return h_bytes

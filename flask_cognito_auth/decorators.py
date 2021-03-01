@@ -33,8 +33,6 @@ def login_handler(fn):
     """
     @wraps(fn)
     def wrapper(*args, **kwargs):
-        csrf_state = config.random_hex_bytes(n_bytes=8)
-        config.state = csrf_state
         aws_cognito_login = config.login_uri
 
         # https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html
@@ -66,7 +64,11 @@ def callback_handler(fn):
             "Authenticating AWS Cognito application / client, with code exchange.")
 
         csrf_token = config.state
-        csrf_state = request.args.get('state')
+        csrf_state = None
+
+        if csrf_token:
+            csrf_state = request.args.get('state')
+
         code = request.args.get('code')
         request_parameters = {'grant_type': 'authorization_code',
                               'client_id': config.client_id,
@@ -85,8 +87,10 @@ def callback_handler(fn):
 
             if csrf_state == csrf_token:
                 auth_success = True
-                logger.info(
-                    "CSRF state validation successfull. Login is successfull for AWS Cognito")
+
+                if csrf_token:
+                    logger.info(
+                        "CSRF state validation successfull. Login is successfull for AWS Cognito")
 
                 logger.info("Decode the access token from response.")
                 verify(response.json()["access_token"])
