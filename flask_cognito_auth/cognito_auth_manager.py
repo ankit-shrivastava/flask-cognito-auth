@@ -25,7 +25,6 @@ class CognitoAuthManager(object):
         """
         if app is not None:
             self.init(app)
-        self.csrf_state = None
         self.jwt_key = None
 
     def init(self, app):

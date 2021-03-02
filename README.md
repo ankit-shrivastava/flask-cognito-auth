@@ -1,7 +1,9 @@
 # Flask-Cognito-Auth
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Coverage](https://github.com/ankit-shrivastava/flask-cognito-auth/blob/main/htmlcov/favicon_32.png)](https://github.com/ankit-shrivastava/flask-cognito-auth/blob/main/htmlcov/index.html)
+[![CircleCI](https://circleci.com/gh/shrivastava-v-ankit/flask-cognito-auth.svg?style=svg)](https://circleci.com/gh/shrivastava-v-ankit/flask-cognito-auth)
+![PyPI](https://img.shields.io/pypi/v/flask-cognito-auth)
+
 
 Flask-Cognito-Auth is a Flask implementation of AWS Cognito Service with User Pool. This extension helps to implement authentication solutions based on AWS's Cognito Service. It contains helpful functions and properties to handle oauth2 and token based authentication flows.
 This extension requires to enable "Enabled Identity Providers" in Appllication client settings of User Pool within AWS Cognito Sevice.
@@ -36,6 +38,7 @@ app.config['COGNITO_CLIENT_ID'] = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
 app.config['COGNITO_CLIENT_SECRET'] = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
 app.config['COGNITO_DOMAIN'] = "https://yourdomainhere.com"
 app.config["ERROR_REDIRECT_URI"] = "page500"        # Optional
+app.config["COGNITO_STATE"] = "mysupersecrethash"   # Optional
 
 app.config['COGNITO_REDIRECT_URI'] = "https://yourdomainhere/cognito/callback"  # Specify this url in Callback URLs section of Appllication client settings of User Pool within AWS Cognito Sevice. Post login application will redirect to this URL
 
@@ -118,9 +121,9 @@ pip install .
 
 ### Contributing
 
-1. Fork repo- https://github.com/ankit-shrivastava/flask-cognito-auth.git
+1. Fork repo- https://github.com/shrivastava-v-ankit/flask-cognito-auth.git
 2. Create your feature branch - `git checkout -b feature/name`
-3. Add Python test (pytest) and html covrage report for added   feature.
+3. Add Python test (pytest) and covrage report for new/changed feature.
 4. Commit your changes - `git commit -am "Added name"`
 5. Push to the branch - `git push origin feature/name`
 6. Create a new pull request

@@ -20,7 +20,7 @@ def test_cognito_config(app):
         app.config['COGNITO_REDIRECT_URI'] = "http://localhost:5000/cognito/callback"
         app.config['COGNITO_SIGNOUT_URI'] = "http://localhost:5000/login"
         app.config['ERROR_REDIRECT_URI'] = "page500"
-        config.state = config.random_hex_bytes(8)
+
         auth_mgr = config.get_auth_manager
         auth_mgr.jwt_key = "mypublickkey"
 
@@ -31,7 +31,6 @@ def test_cognito_config(app):
         assert config.redirect_error_uri == "page500"
         assert config.client_secret == "mysupersecretclientid"
         assert config.signout_uri == "http://localhost:5000/login"
-        assert config.state == auth_mgr.csrf_state
         assert auth_mgr.jwt_key == config.jwt_cognito_key
         assert config.exempt_methods == ['OPTIONS']
 
@@ -41,6 +40,12 @@ def test_cognito_config(app):
         app.config['COGNITO_DOMAIN'] = "mycognitodomain.com"
         assert config.domain == "https://mycognitodomain.com"
 
+        assert config.login_uri == (f"https://mycognitodomain.com/authorize"
+                                    f"?client_id=123drfthinvdr57opQWerv56"
+                                    f"&response_type=code"
+                                    "&redirect_uri=http://localhost:5000/cognito/callback")
+
+        app.config['COGNITO_STATE'] = "mystate"
         assert config.login_uri == (f"https://mycognitodomain.com/authorize"
                                     f"?client_id=123drfthinvdr57opQWerv56"
                                     f"&response_type=code&state={config.state}"
