@@ -123,7 +123,7 @@ pip install .
 
 1. Fork repo- https://github.com/shrivastava-v-ankit/flask-cognito-auth.git
 2. Create your feature branch - `git checkout -b feature/name`
-3. Add Python test (pytest) and html covrage report for added   feature.
+3. Add Python test (pytest) and covrage report for new/changed feature.
 4. Commit your changes - `git commit -am "Added name"`
 5. Push to the branch - `git push origin feature/name`
 6. Create a new pull request
