@@ -18,6 +18,7 @@ app.config['COGNITO_CLIENT_ID'] = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
 app.config['COGNITO_CLIENT_SECRET'] = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
 app.config['COGNITO_DOMAIN'] = "https://yourdomainhere.com"
 app.config["ERROR_REDIRECT_URI"] = "page500"        # Optional
+app.config["COGNITO_STATE"] = "mysupersecrethash"   # Optional
 
 # Specify this url in Callback URLs section of Appllication client settings of User Pool within AWS Cognito Sevice. Post login application will redirect to this URL
 app.config['COGNITO_REDIRECT_URI'] = "http://localhost:5000/cognito/callback"
