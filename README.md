@@ -1,3 +1,5 @@
+# This repository is archived and is maintained under https://github.com/shrivastava-v-ankit/flask-cognito-auth
+
 # Flask-Cognito-Auth
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
